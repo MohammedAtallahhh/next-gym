@@ -15,7 +15,11 @@ export const fetchExercises = createAsyncThunk(
 const exercisesSlice = createSlice({
   name: "exercises",
   initialState,
-  reducers: {},
+  reducers: {
+    setStatus(state, action) {
+      state.status = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchExercises.pending, (state, action) => {
       state.status = "loading";
@@ -36,5 +40,7 @@ const exercisesSlice = createSlice({
 export const selectExercises = (state) => state.exercises.data;
 export const selectExercisesStatus = (state) => state.exercises.status;
 export const selectExercisesError = (state) => state.exercises.error;
+
+export const { setStatus } = exercisesSlice.actions;
 
 export default exercisesSlice.reducer;

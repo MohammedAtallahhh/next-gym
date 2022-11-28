@@ -1,8 +1,13 @@
 import React from "react";
 
-const ExerciseCard = ({ data }) => {
+const ExerciseCard = ({ data, number }) => {
   const { id, name, target, equipment, bodyPart, gifUrl } = data;
-  return <h2>{bodyPart}</h2>;
+  return (
+    <div>
+      <p>{number}</p>
+      {bodyPart}
+    </div>
+  );
 };
 
 export default ExerciseCard;

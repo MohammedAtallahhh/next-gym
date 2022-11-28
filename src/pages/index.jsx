@@ -4,7 +4,11 @@ import Head from "next/head";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Exercises, Hero } from "../components";
-import { fetchExercises, selectExercisesStatus } from "../store/exercisesSlice";
+import {
+  fetchExercises,
+  selectExercisesStatus,
+  setStatus,
+} from "../store/exercisesSlice";
 
 export default function Home() {
   const status = useSelector(selectExercisesStatus);
@@ -15,6 +19,8 @@ export default function Home() {
     if (status === "idle") {
       dispatch(fetchExercises());
     }
+
+    () => dispatch(setStatus());
   }, [status, dispatch]);
 
   return (
