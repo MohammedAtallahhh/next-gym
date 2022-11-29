@@ -7,19 +7,25 @@ const Header = () => {
     <header className="h-[6rem]">
       <div className="w-[95%] max-w-[1200px] h-full mx-auto flex items-center">
         {/* Header Logo */}
-        <div className="mr-8 p-1 bg-green-600 text-white">
+        <Link href="/" className="p-1 mr-8 text-white bg-blue-600">
           <h2 className="text-xl font-bold">Wen Gym.</h2>
-        </div>
+        </Link>
 
         <nav>
           <ul className="flex items-center gap-6">
             <li>
-              <Link href="/" className="text-xl text-green-600">
+              <Link
+                href="/"
+                className="text-xl text-blue-400 transition-all hover:text-blue-700"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/#exercises" className="text-xl text-green-600">
+              <Link
+                href="/#exercises"
+                className="text-xl text-blue-400 transition-all hover:text-blue-700"
+              >
                 Exercises
               </Link>
             </li>
