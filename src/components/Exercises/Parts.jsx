@@ -4,7 +4,7 @@ import { setBodyPart } from "../../store/bodyPartSlice";
 
 import { getBodyParts } from "../../utils/exercises";
 
-const Parts = () => {
+const Parts = ({ exercisesElement }) => {
   const [parts, setParts] = useState([]);
   const [active, setActive] = useState("all");
 
@@ -13,6 +13,13 @@ const Parts = () => {
   useEffect(() => {
     getBodyParts().then((res) => setParts(res));
   }, []);
+
+  const changePart = (part) => {
+    setActive(part);
+    dispatch(setBodyPart(part));
+
+    exercisesElement.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="mb-10 max-w-[800px] mx-auto">
@@ -25,10 +32,7 @@ const Parts = () => {
           className={`flex items-center justify-center px-6 py-2 font-medium text-blue-500 capitalize transition-colors border border-blue-500 rounded-lg cursor-pointer hover:bg-blue-500 hover:text-white ${
             active === "all" ? "!bg-blue-500 !text-white" : ""
           }`}
-          onClick={() => {
-            setActive("all");
-            dispatch(setBodyPart("all"));
-          }}
+          onClick={() => changePart("all")}
         >
           All
         </li>
@@ -38,10 +42,7 @@ const Parts = () => {
             className={`px-6 py-2 font-medium text-blue-500 capitalize border border-blue-500 rounded-lg cursor-pointer flex justify-center items-center hover:bg-blue-500 hover:text-white transition-colors ${
               active === part ? "!bg-blue-500 !text-white" : ""
             }`}
-            onClick={() => {
-              setActive(part);
-              dispatch(setBodyPart(part));
-            }}
+            onClick={() => changePart(part)}
           >
             {part}
           </li>

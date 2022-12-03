@@ -3,7 +3,7 @@ import { fetchData } from "./fetchData";
 const exercisesOptions = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "d1df1c68bamsh5bd222c98de54f3p1a9d87jsnf25ac045f001",
+    "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_EXERCISES_API_KEY,
     "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
   },
 };
@@ -11,7 +11,7 @@ const exercisesOptions = {
 const youtubeOptions = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "f768699bb6msh0c9546aaa3dbf3ep1d9d58jsn1102782e2d97",
+    "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_YOUTUBE_API_KEY,
     "X-RapidAPI-Host": "youtube-search-and-download.p.rapidapi.com",
   },
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useSelector } from "react-redux";
 
@@ -17,6 +17,8 @@ const Exercises = () => {
   const [loading, setLoading] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(0);
+
+  const exercisesRef = useRef(null);
 
   const limit = 12;
   const start = currentPage * limit;
@@ -51,12 +53,15 @@ const Exercises = () => {
         </h2>
 
         {/* Body parts */}
-        <Parts />
+        <Parts exercisesElement={exercisesRef.current} />
 
         {loading ? (
           "Loading..."
         ) : (
-          <div className="grid grid-cols-1 justify-items-center gap-x-8 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div
+            ref={exercisesRef}
+            className="grid grid-cols-1 justify-items-center gap-x-8 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+          >
             {filteredExercises.slice(start, end).map((item, i) => (
               <ExerciseCard key={item.id} data={item} number={start + i + 1} />
             ))}
